@@ -2,6 +2,7 @@ import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import userRoute from "./routers/user.router.js"
+import authRoute from "./routers/auth.router.js"
 
 dotenv.config()
 
@@ -19,4 +20,7 @@ app.listen(3000,()=>{
     console.log("Server listening on port on 3000!");
 })
 
+app.use(express.json())
+
 app.use("/api/user",userRoute);
+app.use("/api/auth",authRoute);
