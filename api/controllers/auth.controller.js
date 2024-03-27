@@ -15,7 +15,6 @@ export const signup=async (req,res,next)=>{
     let newUser=new User({
         username,email,password :hashPassword
     });
-
     
 
     try{
