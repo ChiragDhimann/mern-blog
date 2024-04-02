@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import {Link , useNavigate} from "react-router-dom"
 import { signInFailure,signInStart,signInSuccess } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import GAuth from '../components/GAuth';
+
+
 
 export default function SignIn() {
 
@@ -83,6 +86,8 @@ export default function SignIn() {
               }
              
             </Button>
+            <GAuth />
+            
           </form>
           <div className='flex text-sm  gap-2 mt-5'>
             <span>
