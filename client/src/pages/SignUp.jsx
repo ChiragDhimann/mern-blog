@@ -15,7 +15,7 @@ export default function SignUp() {
     setFormData({...formData,[e.target.id]:e.target.value});
   }
   // console.log(formData);
-  const handleSubmit=async (e)=>{
+  const handleSignUpSubmit=async (e)=>{
     e.preventDefault();
     if(!formData.username || !formData.email || !formData.password){
       return setErrorMessage("All Fields are required");
@@ -61,7 +61,7 @@ export default function SignUp() {
         {/* right */}
 
         <div className='flex-1'>
-          <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+          <form className='flex flex-col gap-4' onSubmit={handleSignUpSubmit}>
             <div>
               <Label value="Username" />
               <TextInput type='text' placeholder='Username' id='username' onChange={handlingData}/>

@@ -19,7 +19,7 @@ export default function SignIn() {
     setFormData({...formData,[e.target.id]:e.target.value});
   }
   // console.log(formData);
-  const handleSubmit=async (e)=>{
+  const handleSignInSubmit=async (e)=>{
     e.preventDefault();
     if(!formData.email || !formData.password){
       return dispatch(signInFailure("please fill all the fileds"));
@@ -63,7 +63,7 @@ export default function SignIn() {
         {/* right */}
 
         <div className='flex-1'>
-          <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+          <form className='flex flex-col gap-4' onSubmit={handleSignInSubmit}>
 
             <div>
               <Label value="Email" />
