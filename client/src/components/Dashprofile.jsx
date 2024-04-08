@@ -5,7 +5,7 @@ import {getDownloadURL, getStorage, uploadBytesResumable,ref} from 'firebase/sto
 import {app} from  '../firebase.js';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { updateFailure,updateStart,updateSuccess,deleteUserError,deleteUserStart,deleteUserSuccess } from '../redux/user/userSlice.js';
+import { updateFailure,updateStart,updateSuccess,deleteUserError,deleteUserStart,deleteUserSuccess,signOutSuccess } from '../redux/user/userSlice.js';
 import {useDispatch} from 'react-redux'
 import { Modal } from 'flowbite-react';
 import {HiOutlineExclamationCircle} from 'react-icons/hi'
@@ -155,6 +155,22 @@ setImageFileUploadError(null);
     }
   }
 
+  const handleSignOut=async ()=>{
+    try{
+      const res=await fetch("/api/user/signout",{
+        method:"POST",
+      });
+      const data=await res.json();
+      if(!res.ok){
+        console.log(data.message);
+      }else{
+        dispatch(signOutSuccess());
+      }
+    }catch(err){
+      next(err);
+    }
+  }
+
   return (
     <div className='max-w-lg mx-auto p-3 w-full'> 
       <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
@@ -202,7 +218,7 @@ setImageFileUploadError(null);
       </form>
       <div className='text-red-500 flex justify-between mt-3'>
         <span onClick={()=>{setShowModal(true)}} className='cursor-pointer'>Delete Account</span>
-        <span className='cursor-pointer'>Sign Out</span>
+        <span onClick={handleSignOut} className='cursor-pointer'>Sign Out</span>
       </div>
       {updateUserSuccess && <Alert color="success" className='mt-5'>
         {updateUserSuccess}
