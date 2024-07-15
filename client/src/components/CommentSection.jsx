@@ -11,7 +11,7 @@ export default function Commentsection({ postId }) {
   const [comment, setComment] = useState("");
   const [commentError, setCommentError] = useState(null);
   const [comments,setComments]=useState([])
-  console.log(comments);
+  // console.log(comment);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (comment.length > 200) {
@@ -117,9 +117,9 @@ export default function Commentsection({ postId }) {
            <p> {comments.length}</p>
           </div>
           </div>
-    
+
           {
-            comments.map(comment=>(
+            comments.map((comment)=>(
             <Comment 
             key={comment._id}
             comment={comment}

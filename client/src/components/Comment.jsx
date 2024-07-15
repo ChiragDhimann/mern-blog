@@ -4,7 +4,7 @@ import moment from 'moment'
 
 export default function Comment({comment}) {
     const [user,setUser]=useState({})
-    console.log(user);
+    // console.log(user);
     useEffect(()=>{
         const getUser=async ()=>{
             try{
@@ -18,7 +18,9 @@ export default function Comment({comment}) {
             }
         }
         getUser();
-    },[Comment])
+    },[comment])
+    console.log(comment.createdAt)
+
   return (
     <div className='flex p-4 border-b dark:border-gray-600 text-sm'>
         <div className='flex-shrink-0 mr-3 '>
