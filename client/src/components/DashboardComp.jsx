@@ -37,8 +37,8 @@ export default function DashboardComp() {
                 const data=await res.json()
                 if(res.ok){
                     setPosts(data.posts)
-                    setTotalPosts(data.totalPosts)
-                    setLastMonthPosts(data.lastMonthPosts)
+                    setTotalPosts(data.totalPost)
+                    setLastMonthPosts(data.lastMonthPost)
                 }
                } catch (error) {
                 console.log(error.message);
@@ -64,7 +64,6 @@ export default function DashboardComp() {
             fetchComments()
         }
     },[currentUser])
-    // console.log(totalPosts);
   return (
    < div className='p-3 md:mx-auto'>
     <div className='flex-wrap flex gap-4 justify-center'>
